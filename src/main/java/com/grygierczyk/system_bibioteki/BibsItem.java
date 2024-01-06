@@ -1,10 +1,12 @@
 package com.grygierczyk.system_bibioteki;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 import java.util.List;
 @Entity
 public class BibsItem {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String zone;
     private String createdDate;
@@ -33,6 +35,8 @@ public class BibsItem {
     private String nationalBibliographyNumber;
     private String publicationYear;
     private String languageOfOriginal;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "BibsItem_id")
     private List<MARC> marcs;
 
     public void addMARCS(MARC marc) {
