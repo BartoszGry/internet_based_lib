@@ -1,4 +1,4 @@
-package com.grygierczyk.system_bibioteki;
+package com.grygierczyk.entity;
 
 import jakarta.persistence.*;
 

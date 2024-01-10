@@ -26,6 +26,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jersey'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.2.1'
 	implementation 'mysql:mysql-connector-java:8.0.33'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'

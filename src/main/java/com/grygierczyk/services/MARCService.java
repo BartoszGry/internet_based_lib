@@ -1,4 +1,4 @@
-package com.grygierczyk.endpoints;
+package com.grygierczyk.services;
 
 import org.springframework.stereotype.Service;
 
