@@ -1,7 +1,7 @@
-package com.grygierczyk.services;
-
-import org.springframework.stereotype.Service;
-
-@Service
-public class MARCService {
-}
+//package com.grygierczyk.services;
+//
+//import org.springframework.stereotype.Service;
+//
+//
+//public class MARCService {
+//}
