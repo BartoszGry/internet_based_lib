@@ -1,24 +1,30 @@
 package com.grygierczyk.services;
 
-import com.grygierczyk.config.Role;
-import com.grygierczyk.entity.User;
+
+import com.grygierczyk.models.User;
 import com.grygierczyk.system_repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
+    @Autowired
     private final UserRepository userRepository;
+
+    @Autowired
     private final PasswordEncoder passwordEncoder;
     @Autowired
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder=passwordEncoder;
+
     }
 
     public User createUser(User user) {
@@ -29,7 +35,7 @@ public class UserService {
             throw new RuntimeException("Użytkownik o podanym adresie e-mail już istnieje");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(Role.USER);
+
         // Hasło powinno być już zahaszowane, jeśli używasz setPassword z PasswordEncoder
         return userRepository.save(user);
     }
@@ -57,5 +63,8 @@ public class UserService {
     }
 
 
-
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email).orElseThrow(()->new UsernameNotFoundException("Emaail is not valid"));
+    }
 }

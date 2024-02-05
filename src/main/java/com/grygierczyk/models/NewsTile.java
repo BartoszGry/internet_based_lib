@@ -1,4 +1,4 @@
-package com.grygierczyk.entity;
+package com.grygierczyk.models;
 
 public class NewsTile {
   private static int nextId = 0;

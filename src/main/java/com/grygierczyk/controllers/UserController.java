@@ -1,6 +1,6 @@
 package com.grygierczyk.controllers;
 
-import com.grygierczyk.entity.User;
+import com.grygierczyk.models.User;
 import com.grygierczyk.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,8 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/users")
@@ -32,7 +30,7 @@ public class UserController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/getByEmail")
     public ResponseEntity<User> getUserByEmail(@RequestParam String email) {
         return userService.getUserByEmail(email)

@@ -1,6 +1,6 @@
 package com.grygierczyk.services;
 
-import com.grygierczyk.entity.NewsTile;
+import com.grygierczyk.models.NewsTile;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

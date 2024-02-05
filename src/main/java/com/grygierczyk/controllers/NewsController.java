@@ -1,7 +1,7 @@
 package com.grygierczyk.controllers;
 
 
-import com.grygierczyk.entity.NewsTile;
+import com.grygierczyk.models.NewsTile;
 import com.grygierczyk.services.NewsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/api/news")
+@RequestMapping("/user")
+@CrossOrigin("*")
 public class NewsController {
 
   private NewsService newsService;
