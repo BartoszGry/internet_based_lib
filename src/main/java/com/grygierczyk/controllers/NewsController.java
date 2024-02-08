@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
-@RequestMapping("/user")
+@RestController
+@RequestMapping("/news")
 @CrossOrigin("*")
 public class NewsController {
 

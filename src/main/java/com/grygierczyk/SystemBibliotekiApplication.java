@@ -22,20 +22,21 @@ public class SystemBibliotekiApplication {
 		SpringApplication.run(SystemBibliotekiApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner run(RoleRepository roleRepository, UserRepository userRepository, PasswordEncoder passwordEncoder){
-		return args->{
-			if (roleRepository.findByAuthority("ADMIN").isPresent())return;
-			Role adminRole=roleRepository.save(new Role("ADMIN"));
-			roleRepository.save(new Role("USER"));
-
-			Set<Role> roleSet=new HashSet<>();
-			roleSet.add(adminRole);
-
-			User admin = new User(1,"admin", passwordEncoder.encode("admin"),roleSet );
-
-			userRepository.save(admin);
-		};
-	}
+//	@Bean
+//	CommandLineRunner run(RoleRepository roleRepository, UserRepository userRepository, PasswordEncoder passwordEncoder){
+//		return args->{
+//
+//			Role adminRole=roleRepository.findByAuthority("ADMIN").get();
+//			Role userRole = roleRepository.findByAuthority("USER").get();
+//
+//			Set<Role> roleSet=new HashSet<>();
+//			roleSet.add(adminRole);
+//			roleSet.add(userRole);
+//
+//			User admin = new User("admin", passwordEncoder.encode("admin"),roleSet );
+//
+//			userRepository.save(admin);
+//		};
+//	}
 
 }

@@ -23,7 +23,7 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public AuthenticationManager authManager(UserDetailsService userDetailsService){
+    public AuthenticationManager authManager(UserDetailsService userDetailsService) {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(userDetailsService);
         return new ProviderManager(daoAuthenticationProvider);
@@ -33,10 +33,15 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
-                .httpBasic(withDefaults())
-                .build();
+                .authorizeHttpRequests(authorize ->
+                        authorize.requestMatchers("/auth/**").permitAll())
+                .authorizeHttpRequests(authorize ->
+                        authorize.anyRequest().authenticated())
+                                .httpBasic(withDefaults())
+                                .build();
     }
+
+
 
 }
 

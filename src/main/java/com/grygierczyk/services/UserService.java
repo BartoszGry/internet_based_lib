@@ -17,7 +17,6 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private final UserRepository userRepository;
-
     @Autowired
     private final PasswordEncoder passwordEncoder;
     @Autowired
@@ -65,6 +64,6 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return userRepository.findByEmail(email).orElseThrow(()->new UsernameNotFoundException("Emaail is not valid"));
+        return userRepository.findByEmail(email).orElseThrow(()->new UsernameNotFoundException("Email is not valid"));
     }
 }

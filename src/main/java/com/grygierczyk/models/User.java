@@ -1,6 +1,7 @@
 package com.grygierczyk.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +22,8 @@ public class User implements UserDetails {
     private String surname;
     @Column(nullable = false, unique = true)
     private String email;
+    //JSON ignore moze nie dzailac ??
+
     @Column(nullable = false)
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -35,6 +38,11 @@ public class User implements UserDetails {
         this.authorities = new HashSet<Role>();
     }
 
+    public User( String email, String password, Set<Role> authorities) {
+        this.email = email;
+        this.password = password;
+        this.authorities = authorities;
+    }
     public User(Integer userId, String email, String password, Set<Role> authorities) {
         this.userId = userId;
         this.email = email;
