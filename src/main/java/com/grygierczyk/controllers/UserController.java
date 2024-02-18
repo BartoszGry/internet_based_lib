@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
     private final UserService userService;
 
@@ -21,15 +21,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody User user) {
-        try {
-            userService.createUser(user);
-            return new ResponseEntity<>("User registered successfully", HttpStatus.CREATED);
-        } catch (RuntimeException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }
+
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/getByEmail")
     public ResponseEntity<User> getUserByEmail(@RequestParam String email) {

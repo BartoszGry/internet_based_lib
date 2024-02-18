@@ -15,7 +15,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.grygierczyk")
 public class SystemBibliotekiApplication {
 
 	public static void main(String[] args) {
