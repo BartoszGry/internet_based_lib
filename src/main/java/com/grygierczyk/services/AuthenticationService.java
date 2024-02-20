@@ -1,12 +1,14 @@
 package com.grygierczyk.services;
 
 import com.grygierczyk.DTO.LoginResponseDTO;
+import com.grygierczyk.DTO.RegistrationResponseDTO;
 import com.grygierczyk.DTO.UserDTO;
 import com.grygierczyk.models.Role;
 import com.grygierczyk.models.User;
 import com.grygierczyk.system_repo.RoleRepository;
 import com.grygierczyk.system_repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -40,15 +42,17 @@ public class AuthenticationService {
     }
 
     @Transactional
-    public User registerUser(String email, String password) {
-        String encodedPassword = passwordEncoder.encode(password);
-        Role userRole = roleRepository.findByAuthority("USER").get();
+    public RegistrationResponseDTO registerUser(String email, String password) {
 
-        Set<Role> authorities = new HashSet<>();
+           String encodedPassword = passwordEncoder.encode(password);
+           Role userRole = roleRepository.findByAuthority("USER").get();
 
-        authorities.add(userRole);
+           Set<Role> authorities = new HashSet<>();
 
-        return userRepository.save(new User(email, encodedPassword, authorities));
+           authorities.add(userRole);
+           userRepository.save(new User(email, encodedPassword, authorities));
+           return new RegistrationResponseDTO(email,null);
+
     }
 
     @Transactional
