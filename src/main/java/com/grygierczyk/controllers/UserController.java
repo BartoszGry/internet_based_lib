@@ -22,7 +22,6 @@ public class UserController {
     }
 
 
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/getByEmail")
     public ResponseEntity<User> getUserByEmail(@RequestParam String email) {
         return userService.getUserByEmail(email)

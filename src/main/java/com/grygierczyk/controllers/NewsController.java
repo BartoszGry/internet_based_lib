@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/news")
 @CrossOrigin(origins = "http://localhost:5173")
 public class NewsController {
 
@@ -22,6 +22,7 @@ public class NewsController {
   public NewsController(NewsService newsService) {
     this.newsService = newsService;
   }
+
   @GetMapping("/all")
   public ResponseEntity<List<NewsTile>> getAllNewsTiles() {
     List<NewsTile> newsTiles = newsService.getNewsTiles();
@@ -42,7 +43,6 @@ public ResponseEntity<String> addNewsTile(
         @RequestParam("imageBytes") MultipartFile imageFile) {
   byte[] imageBytes = null;
   try {
-    // Jeżeli chcesz przesyłać obraz jako plik MultipartFile, konwertuj go do byte[]
     if (imageFile != null && !imageFile.isEmpty()) {
       imageBytes = imageFile.getBytes();
     }
@@ -50,9 +50,9 @@ public ResponseEntity<String> addNewsTile(
     e.printStackTrace();
     return new ResponseEntity<>("Failed to process image file", HttpStatus.INTERNAL_SERVER_ERROR);
   }
-  // Tworzenie obiektu NewsTile na podstawie przekazanych parametrów
+
   NewsTile newsTile = new NewsTile(header, text, imageBytes);
-  // Dodawanie NewsTile do serwisu
+
   newsService.addNewsTile(newsTile);
   return new ResponseEntity<>("NewsTile added successfully", HttpStatus.CREATED);
 }
