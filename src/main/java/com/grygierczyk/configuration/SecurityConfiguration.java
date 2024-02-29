@@ -59,7 +59,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize ->
                         authorize.requestMatchers("/auth/**").permitAll())
                 .authorizeHttpRequests(authorize ->
-                        authorize.requestMatchers("/biblio/**").permitAll())
+                        authorize.requestMatchers("/lib-national/**").permitAll())
+                .authorizeHttpRequests(authorize ->
+                        authorize.requestMatchers("/lib-internal/**").permitAll())
                 .authorizeHttpRequests(authorize ->
                         authorize.requestMatchers("/admin/**").hasRole("ADMIN"))
                 .authorizeHttpRequests(authorize ->

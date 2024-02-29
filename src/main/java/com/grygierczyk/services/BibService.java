@@ -11,14 +11,25 @@ import java.util.List;
 public class BibService {
     private final BibsItemRepository bibsItemRepository;
 
-
-
-
-
-
     public BibService(BibsItemRepository bibsItemRepository) {
         this.bibsItemRepository = bibsItemRepository;
     }
+    public List<BibsItem> fetchByParams(String author, String title, String publicationYear, String publisher, String kind) {
+        if (author != null) {
+            return bibsItemRepository.findByAuthor(author);
+        } else if (title != null) {
+            return bibsItemRepository.findByTitle(title);
+        } else if (publicationYear != null) {
+            return bibsItemRepository.findByPublicationYear(publicationYear);
+        } else if (publisher != null) {
+            return bibsItemRepository.findByPublisher(publisher);
+        } else if (kind != null) {
+            return bibsItemRepository.findByKind(kind);
+        } else {
+            throw new IllegalArgumentException("Nie podano żadnych kryteriów wyszukiwania.");
+        }
+    }
+
 
     public List<BibsItem> findByTitle(String title) {
         return bibsItemRepository.findByTitle(title);

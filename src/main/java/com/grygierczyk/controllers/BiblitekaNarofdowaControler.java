@@ -7,7 +7,7 @@ import com.grygierczyk.clients.BibliotekaNarodowaClient;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/biblio")
+@RequestMapping("/lib-national")
 @CrossOrigin(origins = "http://localhost:5173")
 public class BiblitekaNarofdowaControler {
 
