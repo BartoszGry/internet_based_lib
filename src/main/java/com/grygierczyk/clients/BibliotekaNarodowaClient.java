@@ -28,8 +28,9 @@ public class BibliotekaNarodowaClient {
         this.restTemplate = restTemplate;
     }
 
-    public BiblitekaNarodowaResponseDTO fetchByParams(String author, String title, String publicationYear, String publisher, String kind) {
+    public BiblitekaNarodowaResponseDTO fetchByParams(Long id,String author, String title, String publicationYear, String publisher, String kind) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl)
+                .queryParamIfPresent("id", Optional.ofNullable(id))
                 .queryParamIfPresent("author", Optional.ofNullable(author))
                 .queryParamIfPresent("title", Optional.ofNullable(title))
                 .queryParamIfPresent("publicationYear", Optional.ofNullable(publicationYear))
@@ -42,8 +43,9 @@ public class BibliotekaNarodowaClient {
 
     }
 
-    public List<BibsItem> fetchByParamsToList(String author, String title, String publicationYear, String publisher, String kind) {
+    public List<BibsItem> fetchByParamsToList(Long id,String author, String title, String publicationYear, String publisher, String kind) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl)
+                .queryParamIfPresent("id", Optional.ofNullable(id))
                 .queryParamIfPresent("author", Optional.ofNullable(author))
                 .queryParamIfPresent("title", Optional.ofNullable(title))
                 .queryParamIfPresent("publicationYear", Optional.ofNullable(publicationYear))

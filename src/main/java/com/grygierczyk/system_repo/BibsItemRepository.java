@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface BibsItemRepository extends JpaRepository<BibsItem,Integer> {
     List<BibsItem> findAll(Specification<BibsItem> spec);
+    List<BibsItem> findById(Long id);
     List<BibsItem> findByCreatedDate(String createdDate);
     List<BibsItem> findBySubject(String subject);
     List<BibsItem> findByAuthor(String author);

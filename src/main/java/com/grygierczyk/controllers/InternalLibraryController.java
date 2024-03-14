@@ -19,12 +19,14 @@ public class InternalLibraryController {
     }
 
     @GetMapping("/search")
-    public List<BibsItem> search(@RequestParam(required = false,name = "author") String author,
-                                 @RequestParam(required = false,name = "title") String title,
-                                 @RequestParam(required = false,name = "publicationYear") String publicationYear,
-                                 @RequestParam(required = false,name = "publisher") String publisher,
-                                 @RequestParam(required = false,name = "kind") String kind){
-        return bibService.fetchByParams(author,title,publicationYear,publisher,kind);
+    public List<BibsItem> search(@RequestParam(required = false, name = "id") Long id,
+                                 @RequestParam(required = false, name = "author") String author,
+                                 @RequestParam(required = false, name = "title") String title,
+                                 @RequestParam(required = false, name = "publicationYear") String publicationYear,
+                                 @RequestParam(required = false, name = "publisher") String publisher,
+                                 @RequestParam(required = false, name = "kind") String kind) {
+        return bibService.fetchByParams(id, author, title, publicationYear, publisher, kind);
     }
+
 
 }

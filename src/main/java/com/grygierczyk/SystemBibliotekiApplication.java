@@ -24,6 +24,8 @@ public class SystemBibliotekiApplication {
 //	@Bean
 //	CommandLineRunner run(RoleRepository roleRepository, UserRepository userRepository, PasswordEncoder passwordEncoder){
 //		return args->{
+//			roleRepository.save(new Role("ADMIN"));
+//			roleRepository.save(new Role("USER"));
 //
 //			Role adminRole=roleRepository.findByAuthority("ADMIN").get();
 //			Role userRole = roleRepository.findByAuthority("USER").get();

@@ -7,7 +7,6 @@ import java.util.List;
 @Table(name = "bibs_item")
 public class BibsItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_bibs_item")
     private long id;
     private String zone;

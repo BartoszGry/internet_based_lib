@@ -63,9 +63,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize ->
                         authorize.requestMatchers("/lib-internal/**").permitAll())
                 .authorizeHttpRequests(authorize ->
-                        authorize.requestMatchers("/admin/**").hasRole("ADMIN"))
+                        authorize.requestMatchers("/rent/**").hasRole("USER"))
                 .authorizeHttpRequests(authorize ->
-                        authorize.requestMatchers("/user/**").hasAnyRole("ADMIN", "USER"))
+                        authorize.requestMatchers("/users/**").hasAnyRole("ADMIN"))
                 .authorizeHttpRequests(authorize ->
                         authorize.anyRequest().authenticated())
                 .oauth2ResourceServer((oauth2) -> oauth2
