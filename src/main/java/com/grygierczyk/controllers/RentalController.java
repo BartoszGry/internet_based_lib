@@ -1,9 +1,7 @@
 package com.grygierczyk.controllers;
 
-import com.grygierczyk.DTO.RegistrationDTO;
 import com.grygierczyk.DTO.RentalDTO;
 import com.grygierczyk.DTO.RentalResponseDTO;
-import com.grygierczyk.models.RentalRecord;
 import com.grygierczyk.services.RentalService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

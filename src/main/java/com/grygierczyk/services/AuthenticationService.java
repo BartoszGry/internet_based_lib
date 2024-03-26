@@ -42,7 +42,7 @@ public class AuthenticationService {
     }
 
     @Transactional
-    public RegistrationResponseDTO registerUser(String email, String password) {
+    public RegistrationResponseDTO registerUser(String email, String password,String name,String surname) {
 
            String encodedPassword = passwordEncoder.encode(password);
            Role userRole = roleRepository.findByAuthority("USER").get();
@@ -50,7 +50,7 @@ public class AuthenticationService {
            Set<Role> authorities = new HashSet<>();
 
            authorities.add(userRole);
-           userRepository.save(new User(email, encodedPassword, authorities));
+           userRepository.save(new User( name,surname,email, encodedPassword, authorities));
            return new RegistrationResponseDTO(email,null);
 
     }

@@ -50,8 +50,7 @@ public class User implements UserDetails {
         this.authorities = authorities;
     }
 
-    public User(Integer userId, String name, String surname, String email, String password, Set<Role> authorities) {
-        this.userId = userId;
+    public User( String name, String surname, String email, String password, Set<Role> authorities) {
         this.name = name;
         this.surname = surname;
         this.email = email;
