@@ -5,3 +5,11 @@ In this project, I utilized Spring framework, focusing particularly on the imple
 
 
 Moreover, **[internet_based_lib_front](https://github.com/BartoszGry/internet_based_lib_front)** complements the backend with its frontend implementation. Together, these components provide a cohesive user experience, allowing functionalities like user registration, login, book search, and book borrowing. This integration ensures seamless interaction with the library system while maintaining security standards.
+
+### Additional Information:
+
+**Author:**
+Bartosz Grygierczyk
+
+**Contact:**
+bartoszgrygierczyk01@gmail.com
